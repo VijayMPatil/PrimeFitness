@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Contact,Trainer,MembershipPlan,Enrollment
+from .models import Contact,Trainer,MembershipPlan,Enrollment,Attendance,Gallery
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
@@ -103,3 +103,34 @@ def _extracted_from_enroll_10(request):
     messages.success(request,"Thanks For Enrollment")
     return redirect('/join')    
         
+def getattendance(request):
+    if not request.user.is_authenticated:
+        messages.error(request,'please Login and Try Again')
+        return redirect('/login')
+    SelectTrainer=Trainer.objects.all()
+    context={"SelectTrainer":SelectTrainer}    
+    phone_number= request.POST.get('PhoneNumber')
+    login= request.POST.get('logintime')
+    logout= request.POST.get('loginout')
+    workout= request.POST.get('workout')
+    trainer= request.POST.get('trainer')
+    attendance=Attendance(phone_number=phone_number,login=login,logout=logout,workout=workout,trainer=trainer)
+    attendance.save()
+    print(attendance)
+    messages.success(request,'attendance Add Successfully')
+    return render(request,'attendance.html',context=context)    
+
+def  getprofile(request):
+    if not request.user.is_authenticated:
+        messages.error(request,'please Login and Try Again')
+        return redirect('/login')
+    phone_user=request.user
+    post=Enrollment.objects.filter(phone_number=phone_user)
+    attendance=Attendance.objects.filter(phone_number=phone_user)
+    context={'posts':post,'attendance':attendance}
+    return render(request,'profile.html',context=context)        
+
+def gallery(request):
+    posts=Gallery.objects.all()
+    context={"posts":posts}
+    return render(request,"gallery.html",context)    

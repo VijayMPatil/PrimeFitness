@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import signup,handlelogin,home,handlelogout,handlecontact,enroll
+from .views import signup,handlelogin,home,handlelogout,handlecontact,enroll,getprofile,getattendance,gallery
 
 urlpatterns = [
     path('',home),
@@ -8,5 +8,7 @@ urlpatterns = [
     path('logout',handlelogout),
     path('contact',handlecontact),
     path('join',enroll),
-
+    path('profile',getprofile),
+    path('attendance',getattendance),
+    path('gallery',gallery),
 ]

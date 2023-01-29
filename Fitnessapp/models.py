@@ -38,3 +38,20 @@ class Enrollment(models.Model):
     price= models.IntegerField(max_length=55,blank=True,null=True)
     due_date= models.DateTimeField(blank=True,null=True)
     created_at= models.DateTimeField(auto_now_add=True,blank=True)
+
+class Attendance(models.Model):
+    date=models.DateTimeField(auto_now_add=True)
+    phone_number=models.CharField(max_length=13)
+    login=models.CharField(max_length=50)
+    logout=models.CharField(max_length=50)
+    workout=models.CharField(max_length=100)
+    trainer=models.CharField(max_length=100)
+    def __int__(self):
+        return self.id    
+
+class Gallery(models.Model):
+    title= models.CharField(max_length=100)
+    img= models.ImageField(upload_to='gallery')
+    created_at= models.DateTimeField(auto_now_add=True,blank=True)
+    def __int__(self):
+        return self.id
