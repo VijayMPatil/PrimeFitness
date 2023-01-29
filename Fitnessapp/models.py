@@ -40,12 +40,12 @@ class Enrollment(models.Model):
     created_at= models.DateTimeField(auto_now_add=True,blank=True)
 
 class Attendance(models.Model):
-    date=models.DateTimeField(auto_now_add=True)
-    phone_number=models.CharField(max_length=13)
+    phone_number= models.CharField(max_length=13,null=True,blank=True)
     login=models.CharField(max_length=50)
     logout=models.CharField(max_length=50)
     workout=models.CharField(max_length=100)
     trainer=models.CharField(max_length=100)
+    created_at= models.DateTimeField(auto_now_add=True,null=True,blank=True)
     def __int__(self):
         return self.id    
 

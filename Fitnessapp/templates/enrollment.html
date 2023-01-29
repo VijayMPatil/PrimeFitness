@@ -3,11 +3,12 @@
 Enrollment for Gym
 {% endblock title %}
 {% block head %}
-<h3 class="text-white mt-4">Enroll for Prime Fitness Gym</h3>
-<div class="container mt-1">
+
+<div class="container">
+  <h3 class="text-white mt-4">Enroll for Prime Fitness Gym</h3>
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
         {% for message in messages %}
             <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
             <strong></strong> {{message}}
@@ -18,15 +19,15 @@ Enrollment for Gym
         <form action="/join" method="post">
           {% csrf_token %}
   
-          <div class="form-group">
-            <input type="text" class="form-control" name="FullName" placeholder="Enter Your Full Name" required/>
+          <div class="fcf-form-group">
+            <input type="text" class="form-control mt-2" name="FullName" placeholder="Enter Your Full Name" required/>
           </div>
   
-          <div class="form-group">
+          <div class="fcf-form-group">
             <input type="email" class="form-control mt-2" value="{{user.email}}" name="email" placeholder="Enter Your Email" readonly required/>
           </div>
   
-          <div class="form-group">
+          <div class="fcf-form-group">
             <select class="form-control mt-2" id="gender" name="gender" required>
               <option selected>Select Gender</option>
               <option value="Male">Male</option>
@@ -34,15 +35,15 @@ Enrollment for Gym
             </select>
           </div>
   
-          <div class="form-group">
+          <div class="fcf-form-group">
             <input type="number" class="form-control mt-2" value="{{user.username}}" name="PhoneNumber" placeholder="Enter Your Number" readonly required />
           </div>
   
-          <div class="form-group">
+          <div class="fcf-form-group">
             <input type="date" class="form-control mt-2" name="DOB" placeholder="Date Of Birth"required/>
           </div>
   
-          <div class="form-group">
+          <div class="fcf-form-group">
                 <select  class="form-control mt-2" id="member" name="member"  required>
                     <option selected>Select Membership Plan</option>
                         {% for  p in Membership %}
@@ -50,7 +51,7 @@ Enrollment for Gym
                         {% endfor %}
                 </select>
           </div>
-          <div class="form-group">
+          <div class="fcf-form-group">
                 <select  class="form-control mt-2" id="trainer" name="trainer"  required>
                     <option selected> Select Trainer </option>
                         {% for  p in SelectTrainer %}
@@ -58,21 +59,20 @@ Enrollment for Gym
                         {% endfor %}
                 </select>
           </div>
-          <div class="form-group">
+          <div class="fcf-form-group">
                 <input type="text" class="form-control mt-2" name="reference" placeholder="Refered By"/>
           </div>
           
-          <div class="form-group">
+          <div class="fcf-form-group">
                 <input type="text" class="form-control mt-2" name="address" placeholder="Address"/>
           </div>
-          <br />
-          <div class="d-grid gap-2">
+          <div class="d-grid gap-1">
                 <button class="btn btn-warning" type="submit">Enroll</button>
           </div>
         </form>
       </div>
   
-      <div class="col-md-3"></div>
+      <div class="col-md-2"></div>
     </div>
 </div>
   

@@ -424,7 +424,7 @@ h6 {
 
 #hero .container {
   position: relative;
-  padding-top: 74px;
+  padding-top: 50px;
   text-align: center;
 }
 
@@ -1562,3 +1562,25 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+.fcf-form-group {
+  margin-bottom: 1rem;
+}
+
+.fcf-btn-block {
+  display: block;
+  width: 100%;
+}
+
+.fcf-btn-lg, .fcf-btn-group-lg>.fcf-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+}
+.fcf-btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
